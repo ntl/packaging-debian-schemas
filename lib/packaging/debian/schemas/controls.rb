@@ -16,6 +16,7 @@ require 'packaging/debian/schemas/controls/rfc822/text'
 require 'packaging/debian/schemas/controls/package/data'
 require 'packaging/debian/schemas/controls/package'
 require 'packaging/debian/schemas/controls/package/text'
+require 'packaging/debian/schemas/controls/package/minimal'
 require 'packaging/debian/schemas/controls/package/alternate'
 require 'packaging/debian/schemas/controls/package/alternate/data'
 require 'packaging/debian/schemas/controls/package/alternate/text'
@@ -31,4 +32,5 @@ require 'packaging/debian/schemas/controls/repository/package_index/entry/minima
 
 require 'packaging/debian/schemas/controls/release/data'
 require 'packaging/debian/schemas/controls/release'
+require 'packaging/debian/schemas/controls/release/minimal'
 require 'packaging/debian/schemas/controls/release/text'

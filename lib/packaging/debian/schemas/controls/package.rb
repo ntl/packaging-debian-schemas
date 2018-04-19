@@ -14,6 +14,14 @@ module Packaging
           def self.attributes
             Schemas::Package.attribute_names
           end
+
+          def self.required_attributes
+            %i[package version maintainer description]
+          end
+
+          def self.optional_attributes
+            attributes - required_attributes
+          end
         end
       end
     end

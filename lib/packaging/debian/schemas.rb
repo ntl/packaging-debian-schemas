@@ -16,3 +16,4 @@ require 'packaging/debian/schemas/repository/package_index/entry'
 require 'packaging/debian/schemas/repository/package_index/transform'
 
 require 'packaging/debian/schemas/release'
+require 'packaging/debian/schemas/release/transform'

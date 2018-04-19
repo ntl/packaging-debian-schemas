@@ -21,5 +21,26 @@ context "Package" do
         assert(text == control_text)
       end
     end
+
+    context "Minimal" do
+      control_package = Controls::Package::Minimal.example
+      control_text = Controls::Package::Minimal::Text.example
+
+      context "Read" do
+        package = Transform::Read.(control_text, :rfc822, Package)
+
+        test do
+          assert(package == control_package)
+        end
+      end
+
+      context "Write" do
+        text = Transform::Write.(control_package, :rfc822)
+
+        test do
+          assert(text == control_text)
+        end
+      end
+    end
   end
 end

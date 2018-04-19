@@ -64,10 +64,12 @@ module Packaging
 
               next if value.empty?
 
-              field = Casing::Pascal.(field.to_s)
+              unless field.instance_of?(String)
+                field = Casing::Pascal.(field.to_s)
 
-              field.gsub!(%r{[a-z][A-Z]}) do |str|
-                "#{str[0]}-#{str[1]}"
+                field.gsub!(%r{[a-z][A-Z]}) do |str|
+                  "#{str[0]}-#{str[1]}"
+                end
               end
 
               text << "#{field}: "
