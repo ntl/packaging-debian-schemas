@@ -7,7 +7,7 @@ context "RFC822" do
 
       text = RFC822.write(data)
 
-      test "Converts to raw data" do
+      test "Converts to text" do
         control_text = Controls::RFC822::Text.example
 
         assert(text == control_text)
@@ -49,7 +49,7 @@ context "RFC822" do
 
       text = RFC822.write(data)
 
-      test "Converts to raw data" do
+      test "Converts to text" do
         control_text = Controls::RFC822::Text::SingleParagraph.example
 
         assert(text == control_text)

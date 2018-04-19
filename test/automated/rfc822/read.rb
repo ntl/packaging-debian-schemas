@@ -20,8 +20,6 @@ context "RFC822" do
       read_data = RFC822.read(text)
 
       test "Converts to raw data" do
-        p read_data
-        p control_data
         assert(read_data == control_data)
       end
     end
