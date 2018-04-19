@@ -15,6 +15,7 @@ module Packaging
 
                   data[attribute] = value
                 end
+
                 data
               end
 
@@ -83,7 +84,7 @@ module Packaging
               end
 
               def installed_size
-                222
+                2222
               end
 
               def maintainer

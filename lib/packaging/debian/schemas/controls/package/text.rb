@@ -5,7 +5,6 @@ module Packaging
         module Package
           module Text
             extend self
-
             extend Data
 
             def example

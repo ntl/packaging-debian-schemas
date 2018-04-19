@@ -53,7 +53,7 @@ module Packaging
             end
 
             def architecture
-              Architecture.all
+              Architecture.example
             end
 
             def essential
@@ -89,7 +89,7 @@ module Packaging
             end
 
             def installed_size
-              111
+              1111
             end
 
             def maintainer

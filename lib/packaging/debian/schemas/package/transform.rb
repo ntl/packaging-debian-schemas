@@ -35,7 +35,7 @@ module Packaging
             essential = raw_data[:essential]
 
             if essential.nil?
-              raw_data.delete[:essential]
+              raw_data.delete(:essential)
             else
               value = essential ? 'yes' : 'no'
 
