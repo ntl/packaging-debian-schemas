@@ -11,4 +11,5 @@ require 'packaging/debian/schemas/package'
 require 'packaging/debian/schemas/package/transform'
 
 require 'packaging/debian/schemas/repository/package_index'
+require 'packaging/debian/schemas/repository/package_index/entry'
 require 'packaging/debian/schemas/repository/package_index/transform'
