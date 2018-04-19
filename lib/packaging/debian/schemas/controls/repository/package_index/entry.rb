@@ -5,6 +5,9 @@ module Packaging
         module Repository
           module PackageIndex
             module Entry
+              extend Data
+              extend Package::Data
+
               def self.example(**attributes)
                 data = Data.example(**attributes)
 
