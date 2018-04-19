@@ -40,23 +40,23 @@ module Packaging
                 end
 
                 def md5sum
-                  Digest::MD5.hexdigest('some-md5sum')
+                  Digest::MD5.example
                 end
 
                 def sha1
-                  Digest::SHA1.hexdigest('some-sha1')
+                  Digest::SHA1.example
                 end
 
                 def sha256
-                  Digest::SHA256.hexdigest('some-sha256')
+                  Digest::SHA256.example
                 end
 
                 def sha512
-                  Digest::SHA512.hexdigest('some-sha512')
+                  Digest::SHA512.example
                 end
 
                 def description_md5
-                  Digest::MD5.hexdigest("#{description}\n")
+                  Digest::MD5.example("#{description}\n")
                 end
               end
             end

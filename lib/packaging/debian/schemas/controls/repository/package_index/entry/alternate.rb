@@ -34,19 +34,19 @@ module Packaging
                   end
 
                   def md5sum
-                    Digest::MD5.hexdigest('other-md5sum')
+                    Digest::MD5::Alternate.example
                   end
 
                   def sha1
-                    Digest::SHA1.hexdigest('other-sha1')
+                    Digest::SHA1::Alternate.example
                   end
 
                   def sha256
-                    Digest::SHA256.hexdigest('other-sha256')
+                    Digest::SHA256::Alternate.example
                   end
 
                   def sha512
-                    Digest::SHA512.hexdigest('other-sha512')
+                    Digest::SHA512::Alternate.example
                   end
                 end
 

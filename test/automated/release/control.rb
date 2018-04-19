@@ -1,15 +1,15 @@
 require_relative '../automated_init'
 
-context "Package" do
+context "Release" do
   context "Control" do
     context "All Attributes" do
-      package = Controls::Package.example
+      release = Controls::Release.example
 
-      Package.attribute_names.each do |attribute|
+      Release.attribute_names.each do |attribute|
         test "#{attribute}" do
-          control_value = Controls::Package.public_send(attribute)
+          control_value = Controls::Release.public_send(attribute)
 
-          value = package.public_send(attribute)
+          value = release.public_send(attribute)
 
           assert(value == control_value)
         end
@@ -19,17 +19,17 @@ context "Package" do
     context "No Attributes" do
       attributes = {}
 
-      Package.attribute_names.each do |attribute|
+      Release.attribute_names.each do |attribute|
         attributes[attribute] = :none
       end
 
-      package = Controls::Package.example(**attributes)
+      release = Controls::Release.example(**attributes)
 
-      default = Package.new
+      default = Release.new
 
-      package_data = package.to_h
+      release_data = release.to_h
 
-      package_data.each do |attribute, value|
+      release_data.each do |attribute, value|
         default_value = default.public_send(attribute)
 
         test "#{attribute} is set to default value" do

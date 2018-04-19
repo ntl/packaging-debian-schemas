@@ -2,20 +2,14 @@ module Packaging
   module Debian
     module Schemas
       module Controls
-        module Architecture
+        module Codename
           def self.example
-            'i386'
-          end
-
-          module All
-            def self.example
-              'all'
-            end
+            'some-codename'
           end
 
           module Alternate
             def self.example
-              'sparc'
+              'other-codename'
             end
           end
         end
