@@ -3,6 +3,8 @@ module Packaging
     module Schemas
       module Controls
         module Package
+          extend Data
+
           def self.example(**attributes)
             data = Data.example(**attributes)
 

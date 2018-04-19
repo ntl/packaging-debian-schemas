@@ -7,7 +7,7 @@ context "Package" do
 
       Package.attribute_names.each do |attribute|
         test "#{attribute}" do
-          control_value = Controls::Package::Data.public_send(attribute)
+          control_value = Controls::Package.public_send(attribute)
 
           value = package.public_send(attribute)
 
