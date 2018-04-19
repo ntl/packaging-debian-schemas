@@ -15,6 +15,16 @@ module Packaging
             attribute :description_md5, String
 
             include Package::Attributes
+
+            def <=>(other)
+              sort_key <=> other.sort_key
+            end
+
+            def sort_key
+              basename = ::File.basename(filename, '.deb')
+
+              basename.split('-')
+            end
           end
         end
       end

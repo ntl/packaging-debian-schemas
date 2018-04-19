@@ -37,8 +37,22 @@ module Packaging
             entry
           end
 
+          def added?(filename)
+            entries.any? do |entry|
+              entry.filename == filename
+            end
+          end
+
           def add_entry(entry)
             entries << entry
+          end
+
+          def each(&block)
+            sorted_entries.each(&block)
+          end
+
+          def sorted_entries
+            entries.sort
           end
 
           EntityAddedError = Class.new(StandardError)

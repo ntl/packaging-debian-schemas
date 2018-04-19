@@ -20,11 +20,11 @@ module Packaging
               end
 
               def package
-                'other-package'
+                'z-other-package'
               end
 
               def source
-                "other-source-package (#{version})"
+                "z-other-source-package (#{version})"
               end
 
               def version

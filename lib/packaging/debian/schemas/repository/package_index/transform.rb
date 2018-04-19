@@ -21,7 +21,7 @@ module Packaging
             end
 
             def self.raw_data(index)
-              index.entries.map do |entry|
+              index.sorted_entries.map do |entry|
                 input_entry_data = entry.to_h
 
                 entry_data = {
