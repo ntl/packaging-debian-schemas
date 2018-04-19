@@ -6,11 +6,12 @@ context "Repository" do
       package_index = Controls::Repository::PackageIndex.example
 
       test "Contains two packages" do
-        assert(package_index.size == 2)
+        assert(package_index) do
+          package_count?(2)
+        end
       end
 
-      entry_1 = package_index[0]
-      entry_2 = package_index[1]
+      entry_1, entry_2 = package_index.entries
 
       context "First Entry" do
         control_entry = Controls::Repository::PackageIndex::Entry.example

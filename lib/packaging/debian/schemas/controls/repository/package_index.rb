@@ -10,7 +10,7 @@ module Packaging
               package_index = Schemas::Repository::PackageIndex.new
 
               entries.each do |entry|
-                package_index.add(entry)
+                package_index.add_entry(entry)
               end
 
               package_index

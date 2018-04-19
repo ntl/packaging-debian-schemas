@@ -14,7 +14,7 @@ module Packaging
               raw_data.each do |entry_data|
                 entry = build_entry(entry_data)
 
-                index.add(entry)
+                index.add_entry(entry)
               end
 
               index

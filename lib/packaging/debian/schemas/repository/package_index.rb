@@ -7,16 +7,8 @@ module Packaging
 
           attribute :entries, Array, default: proc { Array.new }
 
-          def add(entry)
+          def add_entry(entry)
             entries << entry
-          end
-
-          def size
-            entries.count
-          end
-
-          def [](index)
-            entries[index]
           end
         end
       end
