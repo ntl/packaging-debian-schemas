@@ -71,7 +71,7 @@ module Packaging
             end
 
             def valid_until
-              Time::Alternate::Raw.example
+              Time::Raw.example(offset: 111)
             end
 
             def md5sum
