@@ -6,7 +6,7 @@ module Packaging
           module Data
             extend self
 
-            def self.example(suite: nil, codename: nil, architectures: nil, components: nil, date: nil, sha256: nil, description: nil, origin: nil, label: nil, version: nil, valid_until: nil, md5sum: nil, sha1: nil, not_automatic: nil, but_automatic_upgrades: nil, acquire_by_hash: nil, signed_by: nil)
+            def self.example(suite: nil, codename: nil, architectures: nil, components: nil, date: nil, sha256: nil, description: nil, origin: nil, label: nil, version: nil, valid_until: nil, md5_sum: nil, sha1: nil, not_automatic: nil, but_automatic_upgrades: nil, acquire_by_hash: nil, signed_by: nil)
               data = {}
 
               Release.attributes.each do |attribute|
@@ -74,7 +74,7 @@ module Packaging
               Time::Raw.example(offset: 111)
             end
 
-            def md5sum
+            def md5_sum
               Digest::MD5.example
             end
 

@@ -106,8 +106,8 @@ module Packaging
               raw_data[:valid_until] = instance.valid_until.rfc2822
             end
 
-            unless instance.md5sum.nil?
-              raw_data['MD5sum'] = instance.md5sum
+            unless instance.md5_sum.nil?
+              raw_data['MD5Sum'] = instance.md5_sum
             end
 
             unless instance.sha1.nil?

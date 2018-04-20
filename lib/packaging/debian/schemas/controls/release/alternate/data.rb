@@ -63,7 +63,7 @@ module Packaging
                 Time::Alternate::Raw.example(offset: 111)
               end
 
-              def md5sum
+              def md5_sum
                 Digest::MD5::Alternate.example
               end
 

@@ -17,7 +17,7 @@ module Packaging
         attribute :version, String
 
         attribute :valid_until, Time
-        attribute :md5sum, String
+        attribute :md5_sum, String
         attribute :sha1, String
 
         attribute :not_automatic

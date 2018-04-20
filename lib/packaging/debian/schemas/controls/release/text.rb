@@ -20,7 +20,7 @@ module Packaging
               Label: #{label}
               Version: #{version}
               Valid-Until: #{valid_until.rfc2822}
-              MD5sum: #{md5sum}
+              MD5Sum: #{md5_sum}
               SHA1: #{sha1}
               NotAutomatic: #{not_automatic ? 'yes' : 'no'}
               ButAutomaticUpgrades: #{but_automatic_upgrades ? 'yes' : 'no'}
