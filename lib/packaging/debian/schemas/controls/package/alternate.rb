@@ -4,6 +4,8 @@ module Packaging
       module Controls
         module Package
           module Alternate
+            extend Data
+
             def self.example
               data = Data.example
 
