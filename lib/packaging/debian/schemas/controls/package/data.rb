@@ -93,7 +93,7 @@ module Packaging
             end
 
             def maintainer
-              'Some Maintainer'
+              'Some Maintainer <some.maintainer@example.com>'
             end
 
             def description
