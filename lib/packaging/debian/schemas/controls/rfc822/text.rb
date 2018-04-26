@@ -37,7 +37,8 @@ module Packaging
               def self.example
                 <<~TEXT
                   Some-Field: Some Value
-                  Other-Field: First Line
+                  Other-Field:
+                      First Line
                       Second Line
                   \tThird Line
 

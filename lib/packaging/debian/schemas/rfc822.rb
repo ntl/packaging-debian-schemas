@@ -37,7 +37,7 @@ module Packaging
             raw_value.each_line do |line|
               line.strip!
 
-              value.concat(line.strip)
+              value.concat(line)
               value.concat("\n")
             end
 
@@ -72,7 +72,9 @@ module Packaging
                 end
               end
 
-              text << "#{field}: "
+              text << "#{field}:"
+
+              text << ' ' unless value.match?(%r{\A[[:blank:]]*\n})
 
               value.each_line.with_index do |line, index|
                 text << "\n " unless index.zero?

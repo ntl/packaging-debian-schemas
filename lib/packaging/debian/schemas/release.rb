@@ -60,6 +60,14 @@ module Packaging
           attribute :md5_sum, String
           attribute :sha1, String
           attribute :sha256, String
+
+          def to_s(checksum_method=nil)
+            checksum_method ||= :sha256
+
+            checksum = public_send(checksum_method)
+
+            "#{checksum} #{size} #{filename}"
+          end
         end
       end
     end

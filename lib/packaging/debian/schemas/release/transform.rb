@@ -8,6 +8,10 @@ module Packaging
           end
 
           def self.instance(raw_data, cls=nil)
+            sha256_checksums = raw_data.delete(:sha256)
+            sha1_checksums = raw_data.delete(:sha1)
+            md5_checksums = raw_data.delete(:md5_sum)
+
             architectures = raw_data.delete(:architectures)
             unless architectures.nil?
               value = architectures.split(%r{[[:blank:]]*,[[:blank:]]*})
@@ -57,7 +61,50 @@ module Packaging
 
             SetAttributes.(instance, raw_data)
 
+            files = Hash.new do |h, filename|
+              h[filename] = File.build(:filename => filename)
+            end
+
+            unless sha256_checksums.nil?
+              parse_checksums(sha256_checksums) do |sha256, size, filename|
+                file = files[filename]
+                file.size ||= Integer(size)
+                file.sha256 = sha256
+              end
+            end
+
+            unless sha1_checksums.nil?
+              parse_checksums(sha1_checksums) do |sha1, size, filename|
+                file = files[filename]
+                file.size ||= Integer(size)
+                file.sha1 = sha1
+              end
+            end
+
+            unless md5_checksums.nil?
+              parse_checksums(md5_checksums) do |md5, size, filename|
+                file = files[filename]
+                file.size ||= Integer(size)
+                file.md5_sum = md5
+              end
+            end
+
+            instance.files = files.values
+
             instance
+          end
+
+          def self.parse_checksums(text, &block)
+            text.each_line do |line|
+              next if line.match?(%r{\A[[:space:]]*\z})
+
+              checksum, size, filename = line.split(%r{[[:blank:]]+})
+
+              size = Integer(size)
+              filename.chomp!
+
+              block.(checksum, size, filename)
+            end
           end
 
           def self.raw_data(instance)
@@ -78,8 +125,25 @@ module Packaging
               raw_data[:date] = instance.date.rfc2822
             end
 
-            unless instance.sha256.nil?
-              raw_data['SHA256'] = instance.sha256
+            if instance.files.any?(&:sha256)
+              raw_data['SHA256'] = instance.files.inject("\n") do |str, file|
+                str << file.to_s(:sha256)
+                str << "\n"
+              end
+            end
+
+            if instance.files.any?(&:md5_sum)
+              raw_data['MD5Sum'] = instance.files.inject("\n") do |str, file|
+                str << file.to_s(:md5_sum)
+                str << "\n"
+              end
+            end
+
+            if instance.files.any?(&:sha1)
+              raw_data['SHA1'] = instance.files.inject("\n") do |str, file|
+                str << file.to_s(:sha1)
+                str << "\n"
+              end
             end
 
             unless instance.description.nil?
@@ -104,14 +168,6 @@ module Packaging
 
             unless instance.valid_until.nil?
               raw_data[:valid_until] = instance.valid_until.rfc2822
-            end
-
-            unless instance.md5_sum.nil?
-              raw_data['MD5Sum'] = instance.md5_sum
-            end
-
-            unless instance.sha1.nil?
-              raw_data['SHA1'] = instance.sha1
             end
 
             unless instance.not_automatic.nil?
