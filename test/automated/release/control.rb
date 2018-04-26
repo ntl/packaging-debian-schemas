@@ -6,6 +6,8 @@ context "Release" do
       release = Controls::Release.example
 
       Release.attribute_names.each do |attribute|
+        next if attribute == :files
+
         test "#{attribute}" do
           control_value = Controls::Release.public_send(attribute)
 
@@ -13,6 +15,15 @@ context "Release" do
 
           assert(value == control_value)
         end
+      end
+
+      test "Files" do
+        files = release.files
+
+        control_files = Controls::Release.files
+        refute(control_files[0] == control_files[1])
+
+        assert(files == control_files)
       end
     end
 

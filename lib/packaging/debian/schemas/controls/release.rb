@@ -22,6 +22,17 @@ module Packaging
           def self.optional_attributes
             attributes - required_attributes
           end
+
+          def self.filename(suite: nil)
+            "dists/#{suite}/InRelease"
+          end
+
+          def self.files
+            [
+              File.example,
+              Alternate::File.example
+            ]
+          end
         end
       end
     end

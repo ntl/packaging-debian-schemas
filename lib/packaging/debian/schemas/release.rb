@@ -9,7 +9,8 @@ module Packaging
         attribute :architectures, Array, default: proc { Array.new }
         attribute :components, Array, default: proc { Array.new }
         attribute :date, Time
-        attribute :sha256, String
+
+        attribute :files, Array, default: proc { Array.new }
 
         attribute :description, String
         attribute :origin, String
@@ -17,14 +18,49 @@ module Packaging
         attribute :version, String
 
         attribute :valid_until, Time
-        attribute :md5_sum, String
-        attribute :sha1, String
 
         attribute :not_automatic
         attribute :but_automatic_upgrades
         attribute :acquire_by_hash
 
         attribute :signed_by, String
+
+        def self.build(data=nil)
+          if data.is_a?(Hash) && data.key?(:files)
+            files = data.delete(:files)
+
+            files = files.map do |file_data|
+              File.build(file_data)
+            end
+
+            data[:files] = files
+          end
+
+          super(data)
+        end
+
+        def add_file(filename, size, md5: nil, sha1: nil, sha256: nil)
+          file = File.new
+          file.filename = filename
+          file.size = size
+          file.md5_sum = md5 unless md5.nil?
+          file.sha1 = sha1 unless sha1.nil?
+          file.sha256 = sha256 unless sha256.nil?
+
+          files << file
+
+          file
+        end
+
+        class File
+          include Schema::DataStructure
+
+          attribute :filename, String
+          attribute :size, Integer
+          attribute :md5_sum, String
+          attribute :sha1, String
+          attribute :sha256, String
+        end
       end
     end
   end

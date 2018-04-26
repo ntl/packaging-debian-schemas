@@ -32,8 +32,10 @@ require 'packaging/debian/schemas/controls/repository/package_index/entry/minima
 
 require 'packaging/debian/schemas/controls/release/data'
 require 'packaging/debian/schemas/controls/release'
+require 'packaging/debian/schemas/controls/release/file'
 require 'packaging/debian/schemas/controls/release/minimal'
 require 'packaging/debian/schemas/controls/release/text'
 require 'packaging/debian/schemas/controls/release/alternate'
 require 'packaging/debian/schemas/controls/release/alternate/data'
+require 'packaging/debian/schemas/controls/release/alternate/file'
 require 'packaging/debian/schemas/controls/release/alternate/text'
