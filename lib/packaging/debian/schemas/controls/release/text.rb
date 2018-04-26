@@ -18,8 +18,8 @@ module Packaging
                #{files[0][:sha256]} #{files[0][:size]} #{files[0][:filename]}
                #{files[1][:sha256]} #{files[1][:size]} #{files[1][:filename]}
               MD5Sum:
-               #{files[0][:md5_sum]} #{files[0][:size]} #{files[0][:filename]}
-               #{files[1][:md5_sum]} #{files[1][:size]} #{files[1][:filename]}
+               #{files[0][:md5]} #{files[0][:size]} #{files[0][:filename]}
+               #{files[1][:md5]} #{files[1][:size]} #{files[1][:filename]}
               SHA1:
                #{files[0][:sha1]} #{files[0][:size]} #{files[0][:filename]}
                #{files[1][:sha1]} #{files[1][:size]} #{files[1][:filename]}

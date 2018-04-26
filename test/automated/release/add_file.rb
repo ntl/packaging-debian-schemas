@@ -34,7 +34,7 @@ context "Relase" do
         end
 
         test "MD5" do
-          assert(file.md5_sum == md5)
+          assert(file.md5 == md5)
         end
 
         test "SHA1" do
@@ -53,7 +53,7 @@ context "Relase" do
       file = release.add_file(filename, size)
 
       test "MD5 is not set" do
-        assert(file.md5_sum.nil?)
+        assert(file.md5.nil?)
       end
 
       test "SHA1 is not set" do

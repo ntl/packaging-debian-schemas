@@ -71,7 +71,7 @@ module Packaging
                   :size => size
                 }
 
-                data[:md5_sum] = md5 unless md5.nil?
+                data[:md5] = md5 unless md5.nil?
                 data[:sha1] = sha1 unless sha1.nil?
                 data[:sha256] = sha256 unless sha256.nil?
 

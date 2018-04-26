@@ -43,7 +43,7 @@ module Packaging
           file = File.new
           file.filename = filename
           file.size = size
-          file.md5_sum = md5 unless md5.nil?
+          file.md5 = md5 unless md5.nil?
           file.sha1 = sha1 unless sha1.nil?
           file.sha256 = sha256 unless sha256.nil?
 
@@ -57,7 +57,7 @@ module Packaging
 
           attribute :filename, String
           attribute :size, Integer
-          attribute :md5_sum, String
+          attribute :md5, String
           attribute :sha1, String
           attribute :sha256, String
 

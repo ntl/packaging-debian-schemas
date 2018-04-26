@@ -85,7 +85,7 @@ module Packaging
               parse_checksums(md5_checksums) do |md5, size, filename|
                 file = files[filename]
                 file.size ||= Integer(size)
-                file.md5_sum = md5
+                file.md5 = md5
               end
             end
 
@@ -132,9 +132,9 @@ module Packaging
               end
             end
 
-            if instance.files.any?(&:md5_sum)
+            if instance.files.any?(&:md5)
               raw_data['MD5Sum'] = instance.files.inject("\n") do |str, file|
-                str << file.to_s(:md5_sum)
+                str << file.to_s(:md5)
                 str << "\n"
               end
             end
