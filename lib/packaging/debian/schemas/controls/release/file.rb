@@ -42,8 +42,9 @@ module Packaging
 
             module Data
               extend File
+              extend self
 
-              def self.example(filename: nil, size: nil, md5: nil, sha1: nil, sha256: nil)
+              def example(filename: nil, size: nil, md5: nil, sha1: nil, sha256: nil)
                 filename ||= self.filename
                 size ||= self.size
 

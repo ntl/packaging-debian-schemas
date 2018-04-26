@@ -37,6 +37,8 @@ module Packaging
             raw_value.each_line do |line|
               line.strip!
 
+              next if line.empty?
+
               value.concat(line)
               value.concat("\n")
             end

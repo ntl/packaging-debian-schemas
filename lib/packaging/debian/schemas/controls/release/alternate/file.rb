@@ -8,6 +8,14 @@ module Packaging
               extend Release::File
               extend self
 
+              def example(filename: nil, size: nil, md5: nil, sha1: nil, sha256: nil)
+                filename ||= self.filename
+
+                data = Data.example(filename: filename, size: size, md5: md5, sha1: sha1, sha256: sha256)
+
+                Schemas::Release::File.build(data)
+              end
+
               def filename
                 filename = Repository::PackageIndex::Alternate.filename
 
@@ -18,15 +26,7 @@ module Packaging
                 extend Release::File
                 extend File
 
-                def self.example
-                  {
-                    :filename => filename,
-                    :size => size,
-                    :md5_sum => md5,
-                    :sha1 => sha1,
-                    :sha256 => sha256
-                  }
-                end
+                extend Release::File::Data
               end
             end
           end

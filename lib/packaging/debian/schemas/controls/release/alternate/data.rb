@@ -39,8 +39,11 @@ module Packaging
                 Time::Alternate::Raw.example
               end
 
-              def sha256
-                Digest::SHA256::Alternate.example
+              def files
+                [
+                  File::Data.example,
+                  Release::File::Data.example
+                ]
               end
 
               def description
