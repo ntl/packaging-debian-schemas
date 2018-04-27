@@ -40,7 +40,7 @@ module Packaging
             if added?(filename)
               error_message = "Entry already added (Filename: #{filename})"
               logger.error { error_message }
-              raise EntityAddedError, error_message
+              raise EntryAddedError, error_message
             end
 
             unless package.nil?
@@ -74,7 +74,7 @@ module Packaging
             SHA256.(path)
           end
 
-          EntityAddedError = Class.new(StandardError)
+          EntryAddedError = Class.new(StandardError)
         end
       end
     end

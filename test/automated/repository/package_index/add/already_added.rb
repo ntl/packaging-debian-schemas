@@ -14,7 +14,7 @@ context "Repository" do
 
         test "Error is raised" do
           assert proc { package_index.add(filename, size) } do
-            raises_error?(Repository::PackageIndex::EntityAddedError)
+            raises_error?(Repository::PackageIndex::EntryAddedError)
           end
         end
       end
