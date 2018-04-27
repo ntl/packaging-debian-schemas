@@ -37,6 +37,8 @@ module Packaging
 
             module Text
               def self.example
+                file = Minimal.file
+
                 <<~TEXT
                 Suite: #{Release.suite}
                 Codename: #{Release.codename}
@@ -44,7 +46,7 @@ module Packaging
                 Components: #{Release.components * ', '}
                 Date: #{Release.date.rfc2822}
                 SHA256:
-                 #{Minimal.file.to_s}
+                 #{file.sha256} #{file.size} #{file.filename}
                 TEXT
               end
             end

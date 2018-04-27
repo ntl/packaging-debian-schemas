@@ -127,21 +127,21 @@ module Packaging
 
             if instance.files.any?(&:sha256)
               raw_data['SHA256'] = instance.files.inject("\n") do |str, file|
-                str << file.to_s(:sha256)
+                str << "#{file.sha256} #{file.size} #{file.filename}"
                 str << "\n"
               end
             end
 
             if instance.files.any?(&:md5)
               raw_data['MD5Sum'] = instance.files.inject("\n") do |str, file|
-                str << file.to_s(:md5)
+                str << "#{file.md5} #{file.size} #{file.filename}"
                 str << "\n"
               end
             end
 
             if instance.files.any?(&:sha1)
               raw_data['SHA1'] = instance.files.inject("\n") do |str, file|
-                str << file.to_s(:sha1)
+                str << "#{file.sha1} #{file.size} #{file.filename}"
                 str << "\n"
               end
             end
