@@ -2,6 +2,8 @@ module Packaging
   module Debian
     module Schemas
       class Release
+        include Log::Dependency
+
         include Schema::DataStructure
 
         attribute :suite, String
@@ -64,9 +66,21 @@ module Packaging
           file.sha1 = sha1 unless sha1.nil?
           file.sha256 = sha256 unless sha256.nil?
 
+          if added_file?(filename)
+            error_message = "File already added (Filename: #{filename})"
+            logger.error { error_message }
+            raise FileAddedError, error_message
+          end
+
           files << file
 
           file
+        end
+
+        def added_file?(filename)
+          files.any? do |file|
+            file.filename == filename
+          end
         end
 
         def self.sha256(path)
@@ -81,6 +95,27 @@ module Packaging
           attribute :md5, String
           attribute :sha1, String
           attribute :sha256, String
+        end
+
+        FileAddedError = Class.new(StandardError)
+
+        module Assertions
+          def file?(file=nil, &block)
+            unless file.nil?
+              block ||= proc { |f| f == file }
+            end
+
+            files.any?(&block)
+          end
+
+          def one_file?(file=nil, &block)
+            unless file.nil?
+              block ||= proc { |f| f == file }
+            end
+
+            files.one?(&block)
+          end
+          alias_method :one?, :one_file?
         end
       end
     end

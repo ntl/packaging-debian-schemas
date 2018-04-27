@@ -37,9 +37,7 @@ module Packaging
 
             entry.md5sum = md5sum unless md5sum.nil?
 
-            entries.each do |entry|
-              next if entry.filename != filename
-
+            if added?(filename)
               error_message = "Entry already added (Filename: #{filename})"
               logger.error { error_message }
               raise EntityAddedError, error_message

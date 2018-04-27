@@ -21,7 +21,9 @@ context "Relase" do
       end
 
       test "Added file is returned" do
-        assert(file == release.files[0])
+        assert release do
+          file?(file)
+        end
       end
 
       context "Attributes" do
