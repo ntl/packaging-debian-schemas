@@ -9,7 +9,24 @@ module Packaging
 
           attribute :entries, Array, default: proc { Array.new }
 
-          def add(filename, size, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil)
+          def add(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil)
+            case filename_or_file
+            when ::File, ::Tempfile
+              path = filename_or_file.path
+
+              filename = File.basename(path)
+              size = filename_or_file.size
+              sha256 ||= self.class.sha256(path)
+
+            else
+              filename = filename_or_file
+            end
+
+            if size.nil?
+              error_message = "Size not supplied and could not be inferred (File: #{filename.inspect})"
+              raise ArgumentError, error_message
+            end
+
             entry = Entry.new
             entry.filename = filename
             entry.size = size
@@ -53,6 +70,10 @@ module Packaging
 
           def sorted_entries
             entries.sort
+          end
+
+          def self.sha256(path)
+            SHA256.(path)
           end
 
           EntityAddedError = Class.new(StandardError)

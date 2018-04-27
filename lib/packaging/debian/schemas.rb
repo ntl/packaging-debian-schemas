@@ -2,6 +2,8 @@ require 'casing'
 require 'schema'
 require 'transform'
 
+require 'packaging/debian/schemas/sha256'
+
 require 'packaging/debian/schemas/rfc822'
 require 'packaging/debian/schemas/rfc822/patterns'
 require 'packaging/debian/schemas/rfc822/single_paragraph'

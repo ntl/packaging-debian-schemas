@@ -70,13 +70,7 @@ module Packaging
         end
 
         def self.sha256(path)
-          digest = ::Digest::SHA256.new
-
-          ::File.open(path) do |io|
-            digest << io.read until io.eof?
-          end
-
-          digest.hexdigest
+          SHA256.(path)
         end
 
         class File
