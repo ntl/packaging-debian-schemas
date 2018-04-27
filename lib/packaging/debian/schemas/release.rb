@@ -39,7 +39,24 @@ module Packaging
           super(data)
         end
 
-        def add_file(filename, size, md5: nil, sha1: nil, sha256: nil)
+        def add_file(file_or_filename, size=nil, md5: nil, sha1: nil, sha256: nil)
+          case file_or_filename
+          when ::File, ::Tempfile
+            path = file_or_filename.path
+
+            filename = ::File.basename(path)
+
+            size ||= file_or_filename.size
+            sha256 ||= self.class.sha256(path)
+          else
+            filename = file_or_filename
+          end
+
+          if size.nil?
+            error_message = "Size not supplied and could not be inferred (File: #{filename.inspect})"
+            raise ArgumentError, error_message
+          end
+
           file = File.new
           file.filename = filename
           file.size = size
@@ -50,6 +67,16 @@ module Packaging
           files << file
 
           file
+        end
+
+        def self.sha256(path)
+          digest = ::Digest::SHA256.new
+
+          ::File.open(path) do |io|
+            digest << io.read until io.eof?
+          end
+
+          digest.hexdigest
         end
 
         class File

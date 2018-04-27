@@ -1,4 +1,5 @@
 require 'digest'
+require 'securerandom'
 
 require 'clock/controls'
 
@@ -9,6 +10,8 @@ require 'packaging/debian/schemas/controls/codename'
 require 'packaging/debian/schemas/controls/component'
 require 'packaging/debian/schemas/controls/suite'
 require 'packaging/debian/schemas/controls/time'
+
+require 'packaging/debian/schemas/controls/random'
 
 require 'packaging/debian/schemas/controls/rfc822/data'
 require 'packaging/debian/schemas/controls/rfc822/text'
