@@ -16,14 +16,14 @@ module Packaging
             unless architectures.nil?
               value = architectures.split(%r{[[:blank:]]*,[[:blank:]]*})
 
-              raw_data[:architectures] = value
+              raw_data[:architectures] = Set.new(value)
             end
 
             components = raw_data.delete(:components)
             unless components.nil?
               value = components.split(%r{[[:blank:]]*,[[:blank:]]*})
 
-              raw_data[:components] = value
+              raw_data[:components] = Set.new(value)
             end
 
             date = raw_data.delete(:date)
@@ -114,11 +114,11 @@ module Packaging
             }
 
             unless instance.architectures.empty?
-              raw_data[:architectures] = instance.architectures * ', '
+              raw_data[:architectures] = instance.architectures.to_a * ', '
             end
 
             unless instance.components.empty?
-              raw_data[:components] = instance.components * ', '
+              raw_data[:components] = instance.components.to_a * ', '
             end
 
             unless instance.date.nil?

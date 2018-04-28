@@ -28,11 +28,15 @@ module Packaging
               end
 
               def architectures
-                Release.architectures.reverse
+                Set.new([
+                  Architecture::Alternate.example,
+                ])
               end
 
               def components
-                Release.components.reverse
+                Set.new([
+                  Component::Alternate.example,
+                ])
               end
 
               def date

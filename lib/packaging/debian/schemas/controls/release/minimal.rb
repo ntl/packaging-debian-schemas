@@ -20,8 +20,8 @@ module Packaging
               {
                 :suite => Release.suite,
                 :codename => Release.codename,
-                :architectures => Release.architectures * ', ',
-                :components => Release.components * ', ',
+                :architectures => Release.architectures.to_a * ', ',
+                :components => Release.components.to_a * ', ',
                 :date => Release.date.rfc2822,
                 :files => files
               }
@@ -42,8 +42,8 @@ module Packaging
                 <<~TEXT
                 Suite: #{Release.suite}
                 Codename: #{Release.codename}
-                Architectures: #{Release.architectures * ', '}
-                Components: #{Release.components * ', '}
+                Architectures: #{Release.architectures.to_a * ', '}
+                Components: #{Release.components.to_a * ', '}
                 Date: #{Release.date.rfc2822}
                 SHA256:
                  #{file.sha256} #{file.size} #{file.filename}

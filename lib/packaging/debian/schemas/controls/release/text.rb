@@ -11,8 +11,8 @@ module Packaging
               <<~TEXT
               Suite: #{suite}
               Codename: #{codename}
-              Architectures: #{architectures * ', '}
-              Components: #{components * ', '}
+              Architectures: #{architectures.to_a * ', '}
+              Components: #{components.to_a * ', '}
               Date: #{date.rfc2822}
               SHA256:
                #{files[0][:sha256]} #{files[0][:size]} #{files[0][:filename]}

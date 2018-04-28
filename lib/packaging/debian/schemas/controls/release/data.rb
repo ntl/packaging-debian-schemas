@@ -33,17 +33,17 @@ module Packaging
             end
 
             def architectures
-              [
+              Set.new([
                 Architecture.example,
                 Architecture::Alternate.example
-              ]
+              ])
             end
 
             def components
-              [
+              Set.new([
                 Component.example,
                 Component::Alternate.example
-              ]
+              ])
             end
 
             def date

@@ -8,8 +8,8 @@ module Packaging
 
         attribute :suite, String
         attribute :codename, String
-        attribute :architectures, Array, default: proc { Array.new }
-        attribute :components, Array, default: proc { Array.new }
+        attribute :architectures, Set, default: proc { Set.new }
+        attribute :components, Set, default: proc { Set.new }
         attribute :date, Time
 
         attribute :files, Array, default: proc { Array.new }
