@@ -37,12 +37,6 @@ module Packaging
 
             entry.md5sum = md5sum unless md5sum.nil?
 
-            if added?(filename)
-              error_message = "Entry already added (Filename: #{filename})"
-              logger.error { error_message }
-              raise EntryAddedError, error_message
-            end
-
             unless package.nil?
               SetAttributes.(entry, package)
             end
@@ -59,6 +53,14 @@ module Packaging
           end
 
           def add_entry(entry)
+            filename = entry.filename
+
+            if added?(filename)
+              error_message = "Entry already added (Filename: #{filename})"
+              logger.error { error_message }
+              raise EntryAddedError, error_message
+            end
+
             entries << entry
           end
 
