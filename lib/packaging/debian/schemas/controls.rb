@@ -18,6 +18,7 @@ require 'packaging/debian/schemas/controls/rfc822/text'
 
 require 'packaging/debian/schemas/controls/package/data'
 require 'packaging/debian/schemas/controls/package'
+require 'packaging/debian/schemas/controls/package/file'
 require 'packaging/debian/schemas/controls/package/text'
 require 'packaging/debian/schemas/controls/package/minimal'
 require 'packaging/debian/schemas/controls/package/alternate'
