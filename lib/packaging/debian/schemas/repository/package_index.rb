@@ -9,7 +9,7 @@ module Packaging
 
           attribute :entries, Array, default: proc { Array.new }
 
-          def add(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil)
+          def add(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil, force: nil)
             case filename_or_file
             when ::File, ::Tempfile
               path = filename_or_file.path
@@ -41,9 +41,17 @@ module Packaging
               SetAttributes.(entry, package)
             end
 
-            add_entry(entry)
+            if force
+              add_entry!(entry)
+            else
+              add_entry(entry)
+            end
 
             entry
+          end
+
+          def add!(filename_or_file, size=nil, **arguments)
+            add(filename_or_file, size, force: true, **arguments)
           end
 
           def added?(filename)
