@@ -21,7 +21,7 @@ module Packaging
               component ||= Component.example
               architecture ||= Architecture.example
 
-              "dists/#{suite}/#{component}/#{architecture}/Packages.gz"
+              "dists/#{suite}/#{component}/binary-#{architecture}/Packages.gz"
             end
           end
         end
