@@ -41,7 +41,7 @@ module Packaging
           super(data)
         end
 
-        def add_file(file_or_filename, size=nil, md5: nil, sha1: nil, sha256: nil)
+        def add_file(file_or_filename, size=nil, md5: nil, sha1: nil, sha256: nil, force: nil)
           case file_or_filename
           when ::File, ::Tempfile
             path = file_or_filename.path
@@ -66,6 +66,20 @@ module Packaging
           file.sha1 = sha1 unless sha1.nil?
           file.sha256 = sha256 unless sha256.nil?
 
+          if force
+            add_file_entry!(file)
+          else
+            add_file_entry(file)
+          end
+        end
+
+        def add_file!(file_or_filename, size=nil, **arguments)
+          add_file(file_or_filename, size, force: true, **arguments)
+        end
+
+        def add_file_entry(file)
+          filename = file.filename
+
           if added_file?(filename)
             error_message = "File already added (Filename: #{filename})"
             logger.error { error_message }
@@ -75,6 +89,16 @@ module Packaging
           files << file
 
           file
+        end
+
+        def add_file_entry!(file)
+          filename = file.filename
+
+          files.delete_if do |file|
+            file.filename == filename
+          end
+
+          add_file_entry(file)
         end
 
         def added_file?(filename)

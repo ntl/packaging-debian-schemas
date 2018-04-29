@@ -23,17 +23,6 @@ module Packaging
 
               "dists/#{suite}/#{component}/#{architecture}/Packages.gz"
             end
-
-            module Alternate
-              def self.filename(suite: nil)
-                suite ||= Suite::Alternate.example
-
-                component = Component::Alternate.example
-                architecture = Architecture::Alternate.example
-
-                PackageIndex.filename(suite: suite, component: component, architecture: architecture)
-              end
-            end
           end
         end
       end

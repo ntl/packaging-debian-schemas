@@ -17,11 +17,6 @@ context "Repository" do
         package = Controls::Package::Alternate.example
 
         size = control_entry.size
-        md5sum = control_entry.md5sum
-        sha1 = control_entry.sha1
-        sha256 = control_entry.sha256
-        sha512 = control_entry.sha512
-        description_md5 = control_entry.description_md5
 
         context "Normal Variant" do
           test "Error is raised" do
@@ -54,7 +49,13 @@ context "Repository" do
             end
           end
 
-          context "Attributes Are Given" do
+          context "Optional Attributes Are Given" do
+            md5sum = control_entry.md5sum
+            sha1 = control_entry.sha1
+            sha256 = control_entry.sha256
+            sha512 = control_entry.sha512
+            description_md5 = control_entry.description_md5
+
             package_index.add!(
               filename,
               size,

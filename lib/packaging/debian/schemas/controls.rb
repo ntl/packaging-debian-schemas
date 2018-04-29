@@ -27,6 +27,7 @@ require 'packaging/debian/schemas/controls/package/alternate/text'
 
 require 'packaging/debian/schemas/controls/repository/package_index'
 require 'packaging/debian/schemas/controls/repository/package_index/text'
+require 'packaging/debian/schemas/controls/repository/package_index/alternate'
 require 'packaging/debian/schemas/controls/repository/package_index/minimal'
 require 'packaging/debian/schemas/controls/repository/package_index/entry/data'
 require 'packaging/debian/schemas/controls/repository/package_index/entry'
