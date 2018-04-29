@@ -6,7 +6,9 @@ module Packaging
           module Minimal
             def self.example
               attributes = {
-                :files => files
+                :files => files,
+                :components => components,
+                :architectures => architectures
               }
 
               Release.optional_attributes.each do |attribute|
@@ -19,8 +21,8 @@ module Packaging
             def self.data
               {
                 :suite => Release.suite,
-                :architectures => Release.architectures.to_a * ', ',
-                :components => Release.components.to_a * ', ',
+                :architectures => Architecture.example,
+                :components => Component.example,
                 :date => Release.date.rfc2822,
                 :files => files
               }
@@ -34,14 +36,30 @@ module Packaging
               Release::File.example(md5: :none, sha1: :none)
             end
 
+            def self.components
+              Set.new([component])
+            end
+
+            def self.component
+              Component.example
+            end
+
+            def self.architectures
+              Set.new([architecture])
+            end
+
+            def self.architecture
+              Architecture.example
+            end
+
             module Text
               def self.example
                 file = Minimal.file
 
                 <<~TEXT
                 Suite: #{Release.suite}
-                Architectures: #{Release.architectures.to_a * ', '}
-                Components: #{Release.components.to_a * ', '}
+                Architectures: #{Minimal.architecture}
+                Components: #{Minimal.component}
                 Date: #{Release.date.rfc2822}
                 SHA256:
                  #{file.sha256} #{file.size} #{file.filename}
