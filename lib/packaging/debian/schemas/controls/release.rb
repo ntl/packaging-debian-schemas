@@ -16,7 +16,7 @@ module Packaging
           end
 
           def self.required_attributes
-            %i[suite codename architectures components date files]
+            %i[suite architectures components date files]
           end
 
           def self.optional_attributes

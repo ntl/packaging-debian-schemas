@@ -19,7 +19,6 @@ module Packaging
             def self.data
               {
                 :suite => Release.suite,
-                :codename => Release.codename,
                 :architectures => Release.architectures.to_a * ', ',
                 :components => Release.components.to_a * ', ',
                 :date => Release.date.rfc2822,
@@ -41,7 +40,6 @@ module Packaging
 
                 <<~TEXT
                 Suite: #{Release.suite}
-                Codename: #{Release.codename}
                 Architectures: #{Release.architectures.to_a * ', '}
                 Components: #{Release.components.to_a * ', '}
                 Date: #{Release.date.rfc2822}
