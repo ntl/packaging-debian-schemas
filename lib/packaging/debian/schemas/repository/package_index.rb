@@ -61,6 +61,16 @@ module Packaging
               raise EntryAddedError, error_message
             end
 
+            add_entry!(entry)
+          end
+
+          def add_entry!(entry)
+            filename = entry.filename
+
+            entries.delete_if do |e|
+              e.filename == filename
+            end
+
             entries << entry
           end
 
