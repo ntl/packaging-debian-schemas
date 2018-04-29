@@ -6,16 +6,17 @@ module Packaging
           module File
             extend self
 
-            def filename(filename: nil, suite: nil)
+            def filename(filename: nil, distribution: nil)
               filename ||= Repository::PackageIndex.filename
 
-              release_filename = Release.filename(suite: suite)
+              release_filename = Release.filename(distribution: distribution)
+
               relative_root = ::File.dirname(release_filename)
 
-              filename = Pathname(filename).
+              relative_filename = Pathname(filename).
                 relative_path_from(Pathname(relative_root)).to_s
 
-              filename
+              ::File.join(relative_root, relative_filename)
             end
 
             def example(filename: nil, size: nil, md5: nil, sha1: nil, sha256: nil)

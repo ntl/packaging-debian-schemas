@@ -23,8 +23,10 @@ module Packaging
             attributes - required_attributes
           end
 
-          def self.filename(suite: nil)
-            "dists/#{suite}/InRelease"
+          def self.filename(distribution: nil)
+            distribution ||= Suite.example
+
+            "dists/#{distribution}/InRelease"
           end
 
           def self.files
