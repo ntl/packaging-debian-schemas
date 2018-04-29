@@ -51,19 +51,19 @@ module Packaging
                 if md5 == :none
                   md5 = nil
                 else
-                  md5 = self.md5
+                  md5 ||= self.md5
                 end
 
                 if sha1 == :none
                   sha1 = nil
                 else
-                  sha1 = self.sha1
+                  sha1 ||= self.sha1
                 end
 
                 if sha256 == :none
                   sha256 = nil
                 else
-                  sha256 = self.sha256
+                  sha256 ||= self.sha256
                 end
 
                 data = {
