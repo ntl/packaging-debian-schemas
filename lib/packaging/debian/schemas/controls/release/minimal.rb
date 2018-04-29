@@ -18,16 +18,6 @@ module Packaging
               Release.example(**attributes)
             end
 
-            def self.data
-              {
-                :suite => Release.suite,
-                :architectures => Architecture.example,
-                :components => Component.example,
-                :date => Release.date.rfc2822,
-                :files => files
-              }
-            end
-
             def self.files
               [file]
             end
