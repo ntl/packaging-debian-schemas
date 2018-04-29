@@ -4,7 +4,9 @@ module Packaging
       module Controls
         module Release
           module Minimal
-            def self.example
+            def self.example(files: nil)
+              files ||= self.files
+
               attributes = {
                 :files => files,
                 :components => components,
