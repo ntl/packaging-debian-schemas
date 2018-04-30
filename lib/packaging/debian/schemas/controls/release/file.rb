@@ -11,12 +11,12 @@ module Packaging
 
               release_filename = Release.filename(distribution: distribution)
 
-              relative_root = ::File.dirname(release_filename)
+              relative_root = ::File.join(
+                ::File.dirname(release_filename),
+                ''
+              )
 
-              relative_filename = Pathname(filename).
-                relative_path_from(Pathname(relative_root)).to_s
-
-              ::File.join(relative_root, relative_filename)
+              filename.delete_prefix(relative_root)
             end
 
             def example(filename: nil, size: nil, md5: nil, sha1: nil, sha256: nil)
