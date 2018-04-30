@@ -6,8 +6,8 @@ module Packaging
           module PackageIndex
             module Entry
               module Alternate
-                def self.example
-                  data = Data.example
+                def self.example(filename: nil)
+                  data = Data.example(filename: filename)
 
                   Schemas::Repository::PackageIndex::Entry.build(data)
                 end
@@ -17,11 +17,15 @@ module Packaging
                   extend Package::Alternate::Data
                   extend self
 
-                  def self.example
+                  def self.example(filename: nil)
                     data = {}
 
                     Entry.attributes.each do |attribute|
-                      value = self.public_send(attribute)
+                      if attribute == :filename && !filename.nil?
+                        value = filename
+                      else
+                        value = self.public_send(attribute)
+                      end
 
                       data[attribute] = value
                     end
