@@ -2,16 +2,15 @@ module Packaging
   module Debian
     module Schemas
       module Controls
-        module Repository
-          module PackageIndex
-            module Entry
-              module Text
-                extend self
-                extend Package::Data
-                extend Data
+        module PackageIndex
+          module Entry
+            module Text
+              extend self
+              extend Package::Data
+              extend Data
 
-                def example
-                  <<~TEXT
+              def example
+                <<~TEXT
                   Filename: #{filename}
                   Size: #{size}
                   MD5sum: #{md5sum}
@@ -20,12 +19,11 @@ module Packaging
                   SHA512: #{sha512}
                   Description-md5: #{description_md5}
                   #{package_text.chomp}
-                  TEXT
-                end
+                TEXT
+              end
 
-                def package_text
-                  Package::Text.example
-                end
+              def package_text
+                Package::Text.example
               end
             end
           end

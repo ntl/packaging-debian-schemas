@@ -4,11 +4,11 @@ context "Repository" do
   context "Package Index" do
     context "Serialization" do
       context do
-        control_package_index = Controls::Repository::PackageIndex.example
-        control_text = Controls::Repository::PackageIndex::Text.example
+        control_package_index = Controls::PackageIndex.example
+        control_text = Controls::PackageIndex::Text.example
 
         context "Read" do
-          package_index = Transform::Read.(control_text, :rfc822, Repository::PackageIndex)
+          package_index = Transform::Read.(control_text, :rfc822, PackageIndex)
 
           test do
             assert(package_index == control_package_index)
@@ -25,11 +25,11 @@ context "Repository" do
       end
 
       context "Minimal" do
-        control_package_index = Controls::Repository::PackageIndex::Minimal.example
-        control_text = Controls::Repository::PackageIndex::Minimal::Text.example
+        control_package_index = Controls::PackageIndex::Minimal.example
+        control_text = Controls::PackageIndex::Minimal::Text.example
 
         context "Read" do
-          package_index = Transform::Read.(control_text, :rfc822, Repository::PackageIndex)
+          package_index = Transform::Read.(control_text, :rfc822, PackageIndex)
 
           test do
             assert(package_index == control_package_index)

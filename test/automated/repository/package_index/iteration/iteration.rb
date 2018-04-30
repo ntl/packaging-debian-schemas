@@ -3,10 +3,10 @@ require_relative '../../../automated_init'
 context "Repository" do
   context "Package Index" do
     context "Iteration" do
-      package_index = Repository::PackageIndex.new
+      package_index = PackageIndex.new
 
-      entry_1 = Controls::Repository::PackageIndex::Entry.example
-      entry_2 = Controls::Repository::PackageIndex::Entry::Alternate.example
+      entry_1 = Controls::PackageIndex::Entry.example
+      entry_2 = Controls::PackageIndex::Entry::Alternate.example
 
       package_index.add_entry(entry_1)
       package_index.add_entry(entry_2)

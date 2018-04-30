@@ -4,9 +4,9 @@ context "Repository" do
   context "Package Index" do
     context "Add Entry" do
       context "Added" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        entry = Controls::Repository::PackageIndex::Entry.example
+        entry = Controls::PackageIndex::Entry.example
 
         package_index.add_entry(entry)
 

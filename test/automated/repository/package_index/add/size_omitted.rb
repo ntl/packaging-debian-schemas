@@ -4,9 +4,9 @@ context "Repository" do
   context "Package Index" do
     context "Add File" do
       context "Temp File Given" do
-        filename = Controls::Repository::PackageIndex::Entry.filename
+        filename = Controls::PackageIndex::Entry.filename
 
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
         test "Raises ArgumentError" do
           assert proc { package_index.add(filename) } do

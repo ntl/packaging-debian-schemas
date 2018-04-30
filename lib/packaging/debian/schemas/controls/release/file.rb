@@ -7,7 +7,7 @@ module Packaging
             extend self
 
             def filename(filename: nil, distribution: nil)
-              filename ||= Repository::PackageIndex.filename
+              filename ||= PackageIndex.filename
 
               release_filename = Release.filename(distribution: distribution)
 
@@ -26,19 +26,19 @@ module Packaging
             end
 
             def size
-              Repository::PackageIndex::Text.size
+              PackageIndex::Text.size
             end
 
             def md5
-              Repository::PackageIndex::Text.md5
+              PackageIndex::Text.md5
             end
 
             def sha1
-              Repository::PackageIndex::Text.sha1
+              PackageIndex::Text.sha1
             end
 
             def sha256
-              Repository::PackageIndex::Text.sha256
+              PackageIndex::Text.sha256
             end
 
             module Data

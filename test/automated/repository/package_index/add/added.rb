@@ -4,15 +4,15 @@ context "Repository" do
   context "Package Index" do
     context "Add" do
       context "Added" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        filename = Controls::Repository::PackageIndex::Entry.filename
-        size = Controls::Repository::PackageIndex::Entry.size
+        filename = Controls::PackageIndex::Entry.filename
+        size = Controls::PackageIndex::Entry.size
 
         entry = package_index.add(filename, size)
 
         test "Entry is returned" do
-          assert(entry.instance_of?(Repository::PackageIndex::Entry))
+          assert(entry.instance_of?(PackageIndex::Entry))
         end
 
         test "Entry is added to index" do

@@ -3,13 +3,13 @@ require_relative '../../automated_init'
 context "Repository" do
   context "Package Index" do
     context "Added Predicate" do
-      filename = Controls::Repository::PackageIndex::Entry.filename
-      size = Controls::Repository::PackageIndex::Entry.size
+      filename = Controls::PackageIndex::Entry.filename
+      size = Controls::PackageIndex::Entry.size
 
       context "Entry Added" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        entry = Controls::Repository::PackageIndex::Entry.example
+        entry = Controls::PackageIndex::Entry.example
         package_index.add_entry(entry)
 
         test "Returns true" do
@@ -18,7 +18,7 @@ context "Repository" do
       end
 
       context "Entry Not Added" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
         test "Returns false" do
           refute(package_index.added?(filename))

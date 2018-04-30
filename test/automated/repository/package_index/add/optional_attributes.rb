@@ -4,16 +4,16 @@ context "Repository" do
   context "Package Index" do
     context "Add" do
       context "Optional Attributes" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        filename = Controls::Repository::PackageIndex::Entry.filename
-        size = Controls::Repository::PackageIndex::Entry.size
+        filename = Controls::PackageIndex::Entry.filename
+        size = Controls::PackageIndex::Entry.size
 
-        md5sum = Controls::Repository::PackageIndex::Entry.md5sum
-        sha1 = Controls::Repository::PackageIndex::Entry.sha1
-        sha256 = Controls::Repository::PackageIndex::Entry.sha256
-        sha512 = Controls::Repository::PackageIndex::Entry.sha512
-        description_md5 = Controls::Repository::PackageIndex::Entry.description_md5
+        md5sum = Controls::PackageIndex::Entry.md5sum
+        sha1 = Controls::PackageIndex::Entry.sha1
+        sha256 = Controls::PackageIndex::Entry.sha256
+        sha512 = Controls::PackageIndex::Entry.sha512
+        description_md5 = Controls::PackageIndex::Entry.description_md5
 
         entry = package_index.add(
           filename,

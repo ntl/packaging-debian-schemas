@@ -3,7 +3,7 @@ require_relative '../../automated_init'
 context "Repository" do
   context "Package Index" do
     context "Control" do
-      package_index = Controls::Repository::PackageIndex.example
+      package_index = Controls::PackageIndex.example
 
       test "Contains two packages" do
         assert(package_index) do
@@ -14,10 +14,10 @@ context "Repository" do
       entry_1, entry_2 = package_index.entries
 
       context "First Entry" do
-        control_entry = Controls::Repository::PackageIndex::Entry.example
+        control_entry = Controls::PackageIndex::Entry.example
 
         context "Package Index Attributes" do
-          Controls::Repository::PackageIndex::Entry.non_package_attributes.each do |attribute|
+          Controls::PackageIndex::Entry.non_package_attributes.each do |attribute|
             test "#{attribute}" do
               control_value = control_entry.public_send(attribute)
 
@@ -42,10 +42,10 @@ context "Repository" do
       end
 
       context "Second Entry" do
-        control_entry = Controls::Repository::PackageIndex::Entry::Alternate.example
+        control_entry = Controls::PackageIndex::Entry::Alternate.example
 
         context "Package Index Attributes" do
-          Controls::Repository::PackageIndex::Entry.non_package_attributes.each do |attribute|
+          Controls::PackageIndex::Entry.non_package_attributes.each do |attribute|
             test "#{attribute}" do
               control_value = control_entry.public_send(attribute)
 

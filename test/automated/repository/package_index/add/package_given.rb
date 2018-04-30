@@ -4,10 +4,10 @@ context "Repository" do
   context "Package Index" do
     context "Add" do
       context "Package Given" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        filename = Controls::Repository::PackageIndex::Entry.filename
-        size = Controls::Repository::PackageIndex::Entry.size
+        filename = Controls::PackageIndex::Entry.filename
+        size = Controls::PackageIndex::Entry.size
 
         package = Controls::Package.example
 

@@ -10,12 +10,12 @@ context "Repository" do
         file.write(file_contents)
         file.close
 
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
         entry = package_index.add(file)
 
         test "Entry data structure is returned" do
-          assert(entry.instance_of?(Repository::PackageIndex::Entry))
+          assert(entry.instance_of?(PackageIndex::Entry))
         end
 
         context "Attributes" do

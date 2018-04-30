@@ -3,9 +3,9 @@ require_relative '../../../automated_init'
 context "Repository" do
   context "Package Index" do
     context "Ordering" do
-      package_index = Repository::PackageIndex.new
+      package_index = PackageIndex.new
 
-      size = Controls::Repository::PackageIndex::Entry.size
+      size = Controls::PackageIndex::Entry.size
 
       sorted_filenames = %w(
         a-0.0.1-1.deb

@@ -17,25 +17,25 @@ module Packaging
               end
 
               def filename
-                filename = Repository::PackageIndex::Alternate.filename
+                filename = PackageIndex::Alternate.filename
 
                 Release::File.filename(filename: filename)
               end
 
               def size
-                Repository::PackageIndex::Alternate::Text.size
+                PackageIndex::Alternate::Text.size
               end
 
               def md5
-                Repository::PackageIndex::Alternate::Text.md5
+                PackageIndex::Alternate::Text.md5
               end
 
               def sha1
-                Repository::PackageIndex::Alternate::Text.sha1
+                PackageIndex::Alternate::Text.sha1
               end
 
               def sha256
-                Repository::PackageIndex::Alternate::Text.sha256
+                PackageIndex::Alternate::Text.sha256
               end
 
               module Data

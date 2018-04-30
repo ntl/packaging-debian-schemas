@@ -10,12 +10,12 @@ context "Repository" do
         file.write(file_contents)
 
         context do
-          package_index = Repository::PackageIndex.new
+          package_index = PackageIndex.new
 
           entry = package_index.add(file)
 
           test "Entry data structure is returned" do
-            assert(entry.instance_of?(Repository::PackageIndex::Entry))
+            assert(entry.instance_of?(PackageIndex::Entry))
           end
 
           context "Attributes" do
@@ -50,7 +50,7 @@ context "Repository" do
         end
 
         context "Checksums are provided" do
-          package_index = Repository::PackageIndex.new
+          package_index = PackageIndex.new
 
           sha256 = Controls::Random.unique_text
           sha512 = Controls::Random.unique_text

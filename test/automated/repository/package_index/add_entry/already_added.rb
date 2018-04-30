@@ -4,18 +4,18 @@ context "Repository" do
   context "Package Index" do
     context "Add Entry" do
       context "Already Added" do
-        package_index = Repository::PackageIndex.new
+        package_index = PackageIndex.new
 
-        prior_entry = Controls::Repository::PackageIndex::Entry.example
+        prior_entry = Controls::PackageIndex::Entry.example
         package_index.add_entry(prior_entry)
 
-        entry = Controls::Repository::PackageIndex::Entry::Alternate.example
+        entry = Controls::PackageIndex::Entry::Alternate.example
         entry.filename = prior_entry.filename
 
         context "Normal Variant" do
           test "Error is raised" do
             assert proc { package_index.add_entry(entry) } do
-              raises_error?(Repository::PackageIndex::EntryAddedError)
+              raises_error?(PackageIndex::EntryAddedError)
             end
           end
         end
@@ -23,7 +23,7 @@ context "Repository" do
         context "Forceful Variant" do
           test "Error is not raised" do
             refute proc { package_index.add_entry!(entry) } do
-              raises_error?(Repository::PackageIndex::EntryAddedError)
+              raises_error?(PackageIndex::EntryAddedError)
             end
           end
 
