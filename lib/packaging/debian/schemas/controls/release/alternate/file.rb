@@ -18,8 +18,9 @@ module Packaging
 
               def filename
                 filename = PackageIndex::Alternate.filename
+                distribution = Suite::Alternate.example
 
-                Release::File.filename(filename: filename)
+                Release::File.filename(filename: filename, distribution: distribution)
               end
 
               def size
