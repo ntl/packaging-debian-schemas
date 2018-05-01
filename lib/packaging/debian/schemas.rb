@@ -5,6 +5,8 @@ require 'configure'; Configure.activate
 require 'schema'
 require 'transform'
 
+require 'packaging/debian/schemas/log'
+
 require 'packaging/debian/schemas/sha256'
 
 require 'packaging/debian/schemas/rfc822'
