@@ -9,6 +9,11 @@ module Packaging
 
               Schemas::Release.build(data)
             end
+
+            module Text
+              extend Release::Text
+              extend Data
+            end
           end
         end
       end
