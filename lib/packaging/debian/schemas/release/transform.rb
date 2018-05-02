@@ -108,10 +108,15 @@ module Packaging
           end
 
           def self.raw_data(instance)
-            raw_data = {
-              :suite => instance.suite,
-              :codename => instance.codename
-            }
+            raw_data = {}
+
+            unless instance.suite.nil?
+              raw_data[:suite] = instance.suite
+            end
+
+            unless instance.codename.nil?
+              raw_data[:codename] = instance.codename
+            end
 
             unless instance.architectures.empty?
               raw_data[:architectures] = instance.architectures.to_a * ', '
