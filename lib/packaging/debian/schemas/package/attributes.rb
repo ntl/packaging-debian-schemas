@@ -26,6 +26,7 @@ module Packaging
               attribute :built_using, String
 
               alias_method :name, :package
+              alias_method :name=, :package=
             end
           end
         end
