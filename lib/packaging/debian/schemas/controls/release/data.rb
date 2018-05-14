@@ -66,7 +66,7 @@ module Packaging
             end
 
             def label
-              'somel-label'
+              'some-label'
             end
 
             def version
