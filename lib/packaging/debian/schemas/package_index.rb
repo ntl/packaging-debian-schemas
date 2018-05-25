@@ -8,7 +8,24 @@ module Packaging
 
         attribute :entries, Array, default: proc { Array.new }
 
-        def add(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil, force: nil)
+        def add(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil)
+          case filename_or_file
+          when ::File, ::Tempfile
+            filename = filename_or_file.path
+          else
+            filename = filename_or_file
+          end
+
+          if added?(filename)
+            error_message = "Entry already added (Filename: #{filename})"
+            logger.error { error_message }
+            raise EntryAddedError, error_message
+          end
+
+          add!(filename_or_file, size, md5sum: md5sum, sha1: sha1, sha256: sha256, sha512: sha512, description_md5: description_md5, package: package)
+        end
+
+        def add!(filename_or_file, size=nil, md5sum: nil, sha1: nil, sha256: nil, sha512: nil, description_md5: nil, package: nil)
           case filename_or_file
           when ::File, ::Tempfile
             path = filename_or_file.path
@@ -40,17 +57,9 @@ module Packaging
             SetAttributes.(entry, package)
           end
 
-          if force
-            add_entry!(entry)
-          else
-            add_entry(entry)
-          end
+          add_entry(entry)
 
           entry
-        end
-
-        def add!(filename_or_file, size=nil, **arguments)
-          add(filename_or_file, size, force: true, **arguments)
         end
 
         def added?(filename)
@@ -60,18 +69,6 @@ module Packaging
         end
 
         def add_entry(entry)
-          filename = entry.filename
-
-          if added?(filename)
-            error_message = "Entry already added (Filename: #{filename})"
-            logger.error { error_message }
-            raise EntryAddedError, error_message
-          end
-
-          add_entry!(entry)
-        end
-
-        def add_entry!(entry)
           filename = entry.filename
 
           entries.delete_if do |e|
