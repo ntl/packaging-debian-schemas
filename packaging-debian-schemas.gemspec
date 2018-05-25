@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'packaging-debian-schemas'
-  s.version = '0.2.0.0'
+  s.version = '0.3.0.0'
   s.summary = 'Schemas for Debian package management control files'
   s.description = ' '
 
