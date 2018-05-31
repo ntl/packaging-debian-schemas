@@ -69,13 +69,25 @@ module Packaging
         end
 
         def add_entry(entry)
-          filename = entry.filename
-
-          entries.delete_if do |e|
-            e.filename == filename
-          end
+          remove_entry(entry)
 
           entries << entry
+        end
+
+        def remove_entry(entry)
+          filename = entry.filename
+
+          removed = false
+
+          entries.delete_if do |e|
+            match = e.filename == filename
+
+            removed = true if match
+
+            match
+          end
+
+          removed
         end
 
         def each(&block)
